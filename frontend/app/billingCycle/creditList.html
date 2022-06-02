@@ -1,0 +1,47 @@
+<div class="box-body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="credit in bcCtrl.billingCycle.credits">
+                <td>
+                    <input class="form-control" 
+                        ng-model="credit.name" 
+                        placeholder="Informe o nome" 
+                        ng-readonly="bcCtrl.tabDelete"
+                    >
+                </td>
+                <td>
+                    <input class="form-control" 
+                        ng-model="credit.value" 
+                        type="number" 
+                        placeholder="Informe o valor" 
+                        ng-readonly="bcCtrl.tabDelete" 
+                        ng-change="bcCtrl.calculateValue()"
+                    >
+                </td>
+                <td width="140">
+                    <button class="btn btn-success" 
+                        ng-click="bcCtrl.addCredit($index)"
+                        ng-disabled="bcCtrl.tabDelete"
+                    ><i class="fa fa-plus"></i></button>
+
+                    <button class="btn btn-warning" 
+                        ng-click="bcCtrl.cloneCredit($index, credit)"
+                        ng-disabled="bcCtrl.tabDelete"
+                    ><i class="fa fa-clone"></i></button>
+                    
+                    <button class="btn btn-danger" 
+                        ng-click="bcCtrl.deleteCredit($index)"
+                        ng-disabled="bcCtrl.tabDelete || bcCtrl.billingCycle.credits.length <= 1"
+                    ><i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

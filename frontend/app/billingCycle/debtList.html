@@ -1,0 +1,53 @@
+<div class="box-body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="debt in bcCtrl.billingCycle.debts">
+                <td>
+                    <input class="form-control" 
+                        placeholder="Informe o nome" 
+                        ng-readonly="bcCtrl.tabDelete"
+                        ng-model="debt.name" 
+                    >
+                </td>
+                <td>
+                    <input class="form-control" 
+                        type="number" 
+                        placeholder="Informe o valor" 
+                        ng-model="debt.value" 
+                        ng-readonly="bcCtrl.tabDelete" 
+                        ng-change="bcCtrl.calculateValue()"
+                    >
+                </td>
+                <td>
+                    <input class="form-control" 
+                        placeholder="Informe o status" 
+                        ng-model="debt.status" 
+                        ng-readonly="bcCtrl.tabDelete"
+                    >
+                </td>
+                <td width="140">
+                    <button class="btn btn-success" 
+                        ng-click="bcCtrl.addDebt($index)"
+                        ng-disabled="bcCtrl.tabDelete"
+                    ><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-warning" 
+                        ng-click="bcCtrl.cloneDebt($index, debt)"
+                        ng-disabled="bcCtrl.tabDelete"
+                    ><i class="fa fa-clone"></i></button>
+                    <button class="btn btn-danger" 
+                        ng-click="bcCtrl.deleteDebt($index)"
+                        ng-disabled="bcCtrl.tabDelete || bcCtrl.billingCycle.debts.length <= 1"
+                    ><i class="fa fa-trash-o"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

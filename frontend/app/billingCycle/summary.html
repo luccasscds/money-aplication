@@ -1,0 +1,7 @@
+<div class="row">
+    <value-box grid="12 4" color-class="bg-green" value="{{ bcCtrl.credit | currency: 'R$ ' }}" text="Total de Crédito" icon-class="fa-bank"></value-box>
+    
+    <value-box grid="12 4" color-class="bg-red" value="{{ bcCtrl.debt | currency: 'R$ ' }}" text="Total de Débitos" icon-class="fa-credit-card"></value-box>
+    
+    <value-box grid="12 4" color-class="bg-blue" value="{{ bcCtrl.total | currency: 'R$ ' }}" text="Valor consolidado" icon-class="fa-money"></value-box>
+</div>
